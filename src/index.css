@@ -4,4 +4,21 @@
 
 @theme {
   --default-transition-duration: 200ms;
+  --spacing-fill: -webkit-fill-available;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    @media (max-width: 768px) { font-size: 15px; }
+    @media (max-width: 640px) { font-size: 14px; }
+    @media (max-width: 450px) { font-size: 13px; }
+  }
+  button {
+    @apply cursor-pointer;
+  }
+  img {
+    @apply max-w-full;
+  }
 }
