@@ -1,4 +1,3 @@
-import { getItem, setItem } from "@utils/localStorage";
 import { useEffect, useState } from "react";
 
   /**
@@ -35,4 +34,22 @@ export default function useLocalStorageState<T>(key: string, initialValue: T): r
   }, [key, state]);
 
   return [state, setState] as const;
+};
+
+export function setItem(key: string, value: unknown) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.error('Error setting local storage item:', error);
+  }
+};
+
+export function getItem(key: string) {
+  try {
+    const item = localStorage.getItem(key);
+    return item ? JSON.parse(item) : null;
+  } catch (error) {
+    console.error('Error getting local storage item:', error);
+    return null;
+  }
 };
